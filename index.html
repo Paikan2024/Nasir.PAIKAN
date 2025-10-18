@@ -1,433 +1,386 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nasir Paikan — Cybersecurity · Systems & Networks</title>
-  <meta name="description" content="Portfolio of Nasir Paikan — Cybersecurity analyst & systems/network administrator based in Paris, France." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="SOC & Cybersecurity-focused IT professional — Windows/Linux, AD/Entra, Intune, SCCM, automation. Paris, France." />
+  <meta property="og:title" content="Nasir Paikan — Cybersecurity · Systems & Networks" />
+  <meta property="og:description" content="SOC & Cybersecurity-focused IT professional — Windows/Linux, AD/Entra, Intune, SCCM, automation. Paris, France." />
+  <meta property="og:type" content="website" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="favicon.ico" />
   <style>
     :root{
-      --bg: #0b0b0f;      /* dark background */
-      --card: #0f1117;    /* card */
-      --text: #e6e6eb;    /* primary text */
-      --muted: #a3a3b2;   /* secondary text */
-      --line: #1d2030;    /* borders */
-      --brand1: #6ea8fe;  /* blue */
-      --brand2: #60d6e7;  /* cyan */
-      --accent: #9b8cff;  /* violet */
-      --shadow: 0 10px 30px rgba(0,0,0,.3);
+      --bg: #0b0e14;          /* near-black slate */
+      --panel: #121826;       /* card bg */
+      --muted: #9aa4b2;       /* text secondary */
+      --text: #e6eaf2;        /* text main */
+      --brand: #4ea1ff;       /* primary accent */
+      --brand-2: #7ee787;     /* secondary accent */
+      --line: #1f2636;        /* borders */
+      --chip: #1a2131;        /* badge */
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius-xl: 20px;
+      --radius-lg: 14px;
+      --radius-md: 10px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f7f8fb; --panel:#ffffff; --text:#111827; --muted:#6b7280; --line:#e5e7eb; --chip:#f1f5f9; --shadow:0 10px 30px rgba(2,6,23,.08);}  
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color:var(--text);
-      background: radial-gradient(1200px 600px at 15% -10%, rgba(96,214,231,.15), transparent 60%),
-                  radial-gradient(1000px 500px at 85% -10%, rgba(155,140,255,.12), transparent 55%),
-                  var(--bg);
-      line-height:1.6;
-    }
+    html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif}
     a{color:inherit;text-decoration:none}
-    .container{max-width:1100px;margin:0 auto;padding:0 20px}
-    header{
-      position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(8px);
-      background:rgba(11,11,15,.6);border-bottom:1px solid var(--line)
-    }
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{font-weight:800;letter-spacing:.4px;font-size:20px}
-    .brand em{color:var(--brand1);font-style:normal}
-    .navlinks{display:none;gap:8px}
-    .navlinks a{padding:8px 14px;border-radius:999px;border:1px solid transparent}
-    .navlinks a:hover{border-color:var(--line);background:#0d0f15}
-    .actions{display:flex;gap:8px;align-items:center}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line);border-radius:999px}
-    .btn{position:relative;display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:14px;overflow:hidden}
-    .btn .bg{position:absolute;inset:0;border-radius:14px;background:linear-gradient(135deg,var(--brand1),var(--brand2));opacity:.22}
-    .btn span{position:relative;font-weight:600}
-
-    /* Hero */
-    .hero{padding:80px 0}
-    .grid{display:grid;gap:26px}
-    @media(min-width:900px){
-      .navlinks{display:flex}
-      .grid{grid-template-columns:1.1fr .9fr}
-    }
-    h1{font-size:clamp(32px,4vw,48px);line-height:1.1;margin:0}
-    .subtitle{color:var(--muted);margin-top:8px;font-weight:500}
-    .meta{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);margin-top:10px}
-    .meta .chip{display:inline-flex;align-items:center;gap:8px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
-    .profile{padding:20px;display:flex;gap:16px;align-items:center}
-    .avatar{width:84px;height:84px;border-radius:18px;object-fit:cover}
-    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .tag{padding:6px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:var(--muted)}
-
-    /* Sections */
-    section{padding:56px 0}
-    .section-title{font-size:28px;margin:0 0 8px}
-    .section-sub{color:var(--muted);margin:0 0 22px}
-
-    /* Experience */
-    .exp-grid{display:grid;gap:16px}
-    @media(min-width:800px){.exp-grid{grid-template-columns:1fr 1fr}}
-    .exp{padding:20px}
-    .exp h3{margin:0;font-size:18px}
-    .exp .where{color:var(--muted);font-size:14px}
-    .exp ul{margin:12px 0 0 18px;padding:0}
-    .exp li{margin:6px 0}
-
-    /* Skills */
-    .skills{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
-    @media(min-width:720px){.skills{grid-template-columns:repeat(3,minmax(0,1fr))}}
-    .skill{padding:16px;display:flex;gap:10px;align-items:center}
-    .icon{width:38px;height:38px;border-radius:12px;background:#121522;display:grid;place-items:center;border:1px solid var(--line)}
-
-    /* Projects */
-    .proj-grid{display:grid;gap:16px}
-    @media(min-width:800px){.proj-grid{grid-template-columns:1fr 1fr}}
-    .proj{padding:20px}
-    .proj h4{margin:0 0 6px;font-size:18px}
-    .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .badge{font-size:12px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
-
-    /* Two-up */
-    .two{display:grid;gap:16px}
-    @media(min-width:800px){.two{grid-template-columns:1fr 1fr}}
-
-    /* Contact */
-    .contact a{display:inline-flex;align-items:center;gap:10px}
-
-    footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted)}/* Utility */
-    .row{display:flex;gap:10px;flex-wrap:wrap}
-    .mt-6{margin-top:24px}
-    .mt-8{margin-top:32px}
-    .sr{-webkit-user-select:none;user-select:none}
-
-    /* Language visibility */
-    .lang-fr{display:none}
-    :root[data-lang='fr'] .lang-fr{display:block}
-    :root[data-lang='fr'] .lang-en{display:none}
+    .container{max-width:1120px;margin:auto;padding:0 20px}
+    .nav{position:sticky;top:0;z-index:50;background:rgb(from var(--panel) r g b / .75);backdrop-filter:saturate(1.5) blur(10px);border-bottom:1px solid var(--line)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
+    .brand-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 0 0 4px rgb(78 161 255 / .15)}
+    .nav-links{display:flex;gap:14px;flex-wrap:wrap}
+    .nav-links a{padding:8px 12px;border-radius:10px;border:1px solid transparent}
+    .nav-links a:hover{border-color:var(--line);background:rgb(from var(--panel) r g b / .5)}
+    .cta{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;background:linear-gradient(135deg,var(--brand),#6cc3ff);color:#001b36;font-weight:600;box-shadow:var(--shadow)}
+    .cta:hover{filter:brightness(1.05)}
+    .hero{padding:72px 0 36px}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-xl);box-shadow:var(--shadow)}
+    .p24{padding:24px}
+    h1{font-size:clamp(28px,3.3vw,46px);line-height:1.15;margin:0 0 8px}
+    .subtitle{color:var(--muted);font-size:clamp(14px,1.2vw,16px);margin:0 0 14px}
+    .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 0}
+    .chip{background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-weight:600}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:16px}
+    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .section{padding:26px 0}
+    .section h2{margin:0 0 12px;font-size:clamp(20px,2.2vw,28px)}
+    .section p.lead{margin:0 0 16px;color:var(--muted)}
+    .timeline{position:relative;padding-left:20px}
+    .timeline:before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--line)}
+    .t-item{position:relative;margin:0 0 14px;padding:12px 14px 12px 18px;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--panel)}
+    .t-item:before{content:"";position:absolute;left:-6px;top:16px;width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px rgb(78 161 255 / .15)}
+    .t-title{display:flex;justify-content:space-between;gap:10px;font-weight:700}
+    .t-meta{font-size:14px;color:var(--muted)}
+    .project{border:1px solid var(--line);border-radius:var(--radius-lg);padding:16px;background:var(--panel)}
+    .project h4{margin:0 0 6px}
+    .project .tags{display:flex;flex-wrap:wrap;gap:8px}
+    .project .tag{border:1px dashed var(--line);border-radius:999px;padding:6px 10px;font-size:14px}
+    .footer{padding:28px 0;color:var(--muted);border-top:1px solid var(--line);margin-top:32px}
+    .lang-toggle{border:1px solid var(--line);background:var(--panel);border-radius:999px;display:inline-flex}
+    .lang-toggle button{padding:6px 10px;border:none;background:transparent;color:var(--muted);cursor:pointer}
+    .lang-toggle button[aria-pressed="true"]{color:var(--text);background:var(--chip);border-radius:999px}
+    .hide{display:none}
+    /* responsive */
+    @media (max-width: 940px){ .hero-grid{grid-template-columns:1fr} }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#home">NP<em>.</em></a>
-      <nav class="navlinks">
-        <a href="#about"><span class="lang-en">About</span><span class="lang-fr">À propos</span></a>
-        <a href="#experience"><span class="lang-en">Experience</span><span class="lang-fr">Expérience</span></a>
-        <a href="#skills"><span class="lang-en">Skills</span><span class="lang-fr">Compétences</span></a>
-        <a href="#projects"><span class="lang-en">Projects</span><span class="lang-fr">Projets</span></a>
-        <a href="#education"><span class="lang-en">Education</span><span class="lang-fr">Formation</span></a>
-        <a href="#contact"><span class="lang-en">Contact</span><span class="lang-fr">Contact</span></a>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="brand-dot"></span> <span>NP</span></div>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
       </nav>
-      <div class="actions">
-        <a class="pill" href="mailto:paikannasir35@gmail.com" aria-label="Email">✉️ Email</a>
-        <a class="pill" href="https://www.linkedin.com/in/nasir-paikan-46596425a/" target="_blank" rel="noopener">in LinkedIn</a>
-        <button id="lang" class="pill" aria-label="Toggle language">EN/FR</button>
-        <button id="theme" class="pill" aria-label="Toggle theme">🌓 Theme</button>
+      <div class="row">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button id="btn-en" aria-pressed="true">EN</button>
+          <button id="btn-fr" aria-pressed="false">FR</button>
+        </div>
+        <a class="cta" href="#contact">Contact</a>
       </div>
     </div>
-  </header>
+  </div>
 
-  <main id="home" class="container hero">
-    <div class="grid">
-      <div>
-        <h1>Nasir Paikan</h1>
-        <div class="subtitle">
-          <span class="lang-en">Cybersecurity Analyst · SOC Analyst · Systems & Security Administration</span>
-          <span class="lang-fr">Analyste Cybersécurité · Analyste SOC · Administration Systèmes & Sécurité</span>
+  <main id="home" class="hero">
+    <div class="container hero-grid">
+      <section class="card p24">
+        <h1 data-en="Nasir Paikan" data-fr="Nasir Paikan">Nasir Paikan</h1>
+        <p class="subtitle" data-en="Cybersecurity Analyst · SOC Analyst · Systems & Security Administration" data-fr="Analyste Cybersécurité · Analyste SOC · Administration Systèmes & Sécurité">Cybersecurity Analyst · SOC Analyst · Systems & Security Administration</p>
+        <div class="row muted">
+          <a href="mailto:paikannasir35@gmail.com">✉️ paikannasir35@gmail.com</a>
+          <span>•</span>
+          <a href="tel:+33781649885">+33 7 81 64 98 85</a>
+          <span>•</span>
+          <span>Paris, France</span>
+          <span>•</span>
+          <a href="https://www.linkedin.com/in/nasir-paikan" target="_blank" rel="noopener">LinkedIn</a>
         </div>
-        <div class="meta">
-          <span class="chip">📍 Paris, France</span>
-          <span class="chip">📞 +33 7 81 64 98 85</span>
-          <span class="chip">✉️ paikannasir35@gmail.com</span>
+        <p class="muted" style="margin-top:12px" data-en="IT professional focused on cybersecurity and systems administration (AD, Intune, GPO, VPN, monitoring). Hands-on SOC training (TryHackMe SOC L1) and vulnerability/pentest workflows (Kali, Nmap, Wireshark). Curious, rigorous, and incident-driven; aiming for SOC & operational security roles." data-fr="Professionnel IT orienté cybersécurité et administration systèmes (AD, Intune, GPO, VPN, supervision). Formé aux environnements SOC (TryHackMe SOC L1) et à l'analyse de vulnérabilités/pentest (Kali, Nmap, Wireshark). Curieux, rigoureux et orienté résolution d'incidents ; objectif SOC & cybersécurité opérationnelle.">IT professional focused on cybersecurity and systems administration...</p>
+        <div class="chips">
+          <span class="chip">SOC</span>
+          <span class="chip">Systems & Networks</span>
+          <span class="chip">Cybersecurity</span>
+          <span class="chip">Automation</span>
         </div>
-        <p class="mt-6" style="max-width:60ch;color:var(--muted)">
-          Professionnel IT orienté cybersécurité et administration systèmes (AD, Intune, GPO, VPN, supervision).
-          Formé aux environnements SOC (TryHackMe SOC L1) et à l'analyse de vulnérabilités/pentest (Kali, Nmap, Wireshark).
-          Curieux, rigoureux et orienté résolution d'incidents, je souhaite évoluer en SOC et cybersécurité opérationnelle.
-        </p>
-        <div class="row mt-8">
-          <a class="btn" href="#contact"><span class="bg"></span><span>Contact me</span></a>
-          <a class="btn" href="#projects"><span class="bg"></span><span>View Projects</span></a>
-          <a class="pill" href="Nasir_Paikan_CV_2025_Cybersecurite.pdf" download>⬇️ Download CV</a>
+        <div class="row" style="margin-top:16px">
+          <a class="cta" href="#projects">View Projects</a>
+          <a class="cta" href="cv.pdf" download>⬇️ Download CV</a>
         </div>
-      </div>
-      <aside class="card profile">
-        <img class="avatar" alt="Avatar" src="https://api.dicebear.com/8.x/initials/svg?seed=Nasir%20Paikan&backgroundType=gradientLinear&fontWeight=700" />
-        <div>
-          <div style="font-weight:700; line-height:1.6;"><div class="lang-en">Available for Pentesting & Cybersecurity Missions</div><div class="lang-fr">Disponible pour des missions de Pentest & Cybersécurité</div></div><div style="margin-top:6px;color:var(--muted);font-size:14px">Hybrid / On-site · Paris · Freelance/CDI</div><div class="tags">
-            <span class="tag">SOC</span>
-            <span class="tag">Systems & Networks</span>
-            <span class="tag">Cybersecurity</span>
-            <span class="tag">Automation</span>
-          </div>
+      </section>
+      <aside class="card p24" style="text-align:center">
+        <img alt="Portrait avatar" src="avatar.jpg" style="width:230px;height:230px;border-radius:50%;object-fit:cover;border:6px solid var(--chip)" />
+        <p class="muted" style="margin:10px 0 0" data-en="Available for Pentesting & Cybersecurity Missions" data-fr="Disponible pour des missions de Pentest & Cybersécurité">Available for Pentesting & Cybersecurity Missions</p>
+        <div class="chips" style="justify-content:center">
+          <span class="chip">Hybrid</span><span class="chip">On‑site</span><span class="chip">Freelance/CDI</span>
         </div>
       </aside>
     </div>
   </main>
 
-  <section id="about">
-    <div class="container">
-      <h2 class="section-title"><span class="lang-en">About</span><span class="lang-fr">À propos</span></h2>
-      <p class="section-sub"><span class="lang-en">Snapshot of my profile and interests.</span><span class="lang-fr">Aperçu de mon profil et de mes intérêts.</span></p>
-      <div class="card" style="padding:20px">
-        <p class="lang-en">I design, secure and operate Windows/Linux environments with Active Directory, Entra ID/Intune, SCCM and strong baseline hardening. I build realistic labs (pfSense VPN, PXE imaging, Wiki.js with LDAPS), document clearly, and coach users on security best practices.</p>
-        <p class="lang-fr">Je conçois, sécurise et exploite des environnements Windows/Linux avec Active Directory, Entra ID/Intune, SCCM et un durcissement solide. Je crée des labs réalistes (VPN pfSense, imagerie PXE, Wiki.js avec LDAPS), documente clairement et accompagne les utilisateurs sur les bonnes pratiques de sécurité.</p>
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container grid cols-2">
+      <div class="card p24">
+        <h2 data-en="About" data-fr="À propos">About</h2>
+        <p class="lead" data-en="Snapshot of my profile and interests." data-fr="Aperçu de mon profil et de mes intérêts.">Snapshot of my profile and interests.</p>
+        <p data-en="I design, secure and operate Windows/Linux environments with Active Directory, Entra ID/Intune, SCCM and strong baseline hardening. I build realistic labs (pfSense VPN, PXE imaging, Wiki.js with LDAPS), document clearly, and coach users on security best practices." data-fr="Je conçois, sécurise et exploite des environnements Windows/Linux avec Active Directory, Entra ID/Intune, SCCM et un durcissement solide. Je crée des labs réalistes (VPN pfSense, imagerie PXE, Wiki.js avec LDAPS), documente clairement et accompagne les utilisateurs sur les bonnes pratiques de sécurité.">...</p>
+      </div>
+      <div class="card p24">
+        <h2>Highlights</h2>
+        <div class="chips">
+          <span class="chip">AD/Entra · Intune · SCCM</span>
+          <span class="chip">pfSense · VPN · GPO</span>
+          <span class="chip">Kali · Nmap · Wireshark</span>
+          <span class="chip">PowerShell · Bash · Python</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="experience">
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
     <div class="container">
-      <h2 class="section-title"><span class="lang-en">Experience</span><span class="lang-fr">Expérience</span></h2>
-      <p class="section-sub"><span class="lang-en">Hands-on roles in support, systems & security.</span><span class="lang-fr">Rôles opérationnels en support, systèmes & sécurité.</span></p>
-      <div class="exp-grid">
-        <article class="card exp">
-          <div class="lang-en">
-            <h3>IT Support Engineer</h3>
-            <div class="where">SISL/HCLTech — End client: Groupecat — Suresnes (92) · Since May 2025</div>
-            <ul>
-              <li>N2/N3 support across Windows, macOS & network; VPN, certificates, GPO, system incidents.</li>
-              <li>Endpoint management via Intune, SCCM, Workspace ONE UEM; packaging & imaging.</li>
-              <li>PowerShell automation; security compliance; AD & Entra ID (Azure AD).</li>
-              <li>Technical documentation and user enablement.</li>
-            </ul>
+      <h2 data-en="Experience" data-fr="Expérience">Experience</h2>
+      <p class="lead" data-en="Hands-on roles in support, systems & security." data-fr="Rôles opérationnels en support, systèmes & sécurité.">Hands-on roles in support, systems & security.</p>
+      <div class="timeline">
+        <article class="t-item">
+          <div class="t-title">
+            <span data-en="IT Support Engineer — SISL/HCLTech (End client: Groupecat)" data-fr="Ingénieur Support — SISL/HCLTech (Client : Groupecat)">IT Support Engineer — SISL/HCLTech (End client: Groupecat)</span>
+            <span class="t-meta" data-en="Suresnes · Since May 2025" data-fr="Suresnes · Depuis mai 2025">Suresnes · Since May 2025</span>
           </div>
-          <div class="lang-fr">
-            <h3>Ingénieur Support Informatique</h3>
-            <div class="where">SISL/HCLTech — Client final : Groupecat — Suresnes (92) · Depuis mai 2025</div>
-            <ul>
-              <li>Support N2/N3 Windows, macOS & réseau ; VPN, certificats, GPO, incidents systèmes.</li>
-              <li>Gestion postes via Intune, SCCM, Workspace ONE UEM ; packaging & imaging.</li>
-              <li>Automatisation PowerShell ; conformité sécurité ; AD & Entra ID (Azure AD).</li>
-              <li>Documentation technique et accompagnement utilisateurs.</li>
-            </ul>
-          </div>
+          <ul class="muted">
+            <li data-en="N2/N3 support across Windows, macOS & network; VPN, certificates, GPO, system incidents." data-fr="Support N2/N3 Windows, macOS & réseau ; VPN, certificats, GPO, incidents systèmes.">N2/N3 support...</li>
+            <li data-en="Endpoint management via Intune, SCCM, Workspace ONE UEM; packaging & imaging." data-fr="Gestion postes via Intune, SCCM, Workspace ONE UEM ; packaging & imaging.">Endpoint management...</li>
+            <li data-en="PowerShell automation; security compliance; AD & Entra ID (Azure AD)." data-fr="Automatisation PowerShell ; conformité sécurité ; AD & Entra ID (Azure AD).">PowerShell automation...</li>
+          </ul>
         </article>
-        <article class="card exp">
-          <div class="lang-en">
-            <h3>IT Support Engineer</h3>
-            <div class="where">SISU/HCLTech — End client: Kenvue — Issy‑les‑Moulineaux · May 2025 – Jun 2025</div>
-            <ul>
-              <li>Onsite L1/L2 support (hardware, software, network) for endpoints & mobiles.</li>
-              <li>O365 environment (Teams, Exchange, Intune); onboarding/offboarding.</li>
-              <li>International collaboration and contributions to operational security.</li>
-            </ul>
+        <article class="t-item">
+          <div class="t-title">
+            <span data-en="IT Support Engineer — SISU/HCLTech (End client: Kenvue)" data-fr="Ingénieur Support — SISU/HCLTech (Client : Kenvue)">IT Support Engineer — SISU/HCLTech (End client: Kenvue)</span>
+            <span class="t-meta">Issy‑les‑Moulineaux · May–Jun 2025</span>
           </div>
-          <div class="lang-fr">
-            <h3>Ingénieur Support Informatique</h3>
-            <div class="where">SISU/HCLTech — Client final : Kenvue — Issy‑les‑Moulineaux · Mai 2025 – Juin 2025</div>
-            <ul>
-              <li>Support de proximité N1/N2 (matériel, logiciel, réseau) pour postes & mobiles.</li>
-              <li>Environnement O365 (Teams, Exchange, Intune) ; onboarding/offboarding.</li>
-              <li>Collaboration internationale et contribution à la sécurité opérationnelle.</li>
-            </ul>
-          </div>
+          <ul class="muted">
+            <li data-en="Onsite L1/L2 support (hardware, software, network) for endpoints & mobiles." data-fr="Support de proximité N1/N2 (matériel, logiciel, réseau) pour postes & mobiles.">Onsite L1/L2 support...</li>
+            <li data-en="O365 environment (Teams, Exchange, Intune); onboarding/offboarding." data-fr="Environnement O365 (Teams, Exchange, Intune) ; onboarding/offboarding.">O365 environment...</li>
+          </ul>
         </article>
-        <article class="card exp">
-          <div class="lang-en">
-            <h3>Systems & Network Technician</h3>
-            <div class="where">Excelya — Boulogne‑Billancourt · Aug 2024 – Mar 2025</div>
-            <ul>
-              <li>Maintenance & troubleshooting; AD administration (accounts, groups, GPO).</li>
-              <li>DHCP, DNS, network monitoring; onsite & remote support.</li>
-              <li>PowerShell scripts to automate administration & security.</li>
-            </ul>
+        <article class="t-item">
+          <div class="t-title">
+            <span data-en="Systems & Network Technician — Excelya" data-fr="Technicien Systèmes & Réseaux — Excelya">Systems & Network Technician — Excelya</span>
+            <span class="t-meta">Aug 2024 – Mar 2025</span>
           </div>
-          <div class="lang-fr">
-            <h3>Technicien Systèmes & Réseaux</h3>
-            <div class="where">Excelya — Boulogne‑Billancourt · Août 2024 – Mars 2025</div>
-            <ul>
-              <li>Maintenance & dépannage ; administration AD (comptes, groupes, GPO).</li>
-              <li>DHCP, DNS, supervision réseau ; support sur site & à distance.</li>
-              <li>Scripts PowerShell pour automatiser l'administration & la sécurité.</li>
-            </ul>
-          </div>
+          <ul class="muted">
+            <li>AD administration, DHCP/DNS, network monitoring; remote & onsite support.</li>
+            <li>PowerShell for automation and hardening.</li>
+          </ul>
         </article>
-        <article class="card exp">
-          <div class="lang-en">
-            <h3>Onsite Support Technician</h3>
-            <div class="where">HelpLine (Euronext) — Paris · Oct 2022 – Sep 2024</div>
-            <ul>
-              <li>Workstation migrations; multichannel support; remote assistance.</li>
-              <li>VMware for VMs; incident management, process & tooling improvements.</li>
-              <li>User training on new tools and best practices.</li>
-            </ul>
+        <article class="t-item">
+          <div class="t-title">
+            <span data-en="Onsite Support Technician — HelpLine (Euronext)" data-fr="Technicien support — HelpLine (Euronext)">Onsite Support Technician — HelpLine (Euronext)</span>
+            <span class="t-meta">Oct 2022 – Sep 2024</span>
           </div>
-          <div class="lang-fr">
-            <h3>Technicien support de proximité</h3>
-            <div class="where">HelpLine (Euronext) — Paris · Octobre 2022 – Septembre 2024</div>
-            <ul>
-              <li>Migration de postes ; support multicanal ; prise en main à distance.</li>
-              <li>VMware pour VMs ; suivi d'incidents, amélioration des processus & outils.</li>
-              <li>Formation utilisateurs aux nouveaux outils & bonnes pratiques.</li>
-            </ul>
-          </div>
+          <ul class="muted">
+            <li>Workstation migrations; multichannel support; remote assistance.</li>
+            <li>VMware for VMs; process and tooling improvements.</li>
+          </ul>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="skills">
+  <!-- SKILLS -->
+  <section id="skills" class="section">
     <div class="container">
-      <h2 class="section-title"><span class="lang-en">Skills</span><span class="lang-fr">Compétences</span></h2>
-      <p class="section-sub"><span class="lang-en">Security · Systems · Automation · Tools</span><span class="lang-fr">Sécurité · Systèmes · Automatisation · Outils</span></p>
-      <div class="skills">
-        <div class="card skill"><div class="icon">🛡️</div> Sécurité: Kali, Nmap, Wireshark, IDS/IPS, Firewall, VPN (OpenVPN, WireGuard)</div>
-        <div class="card skill"><div class="icon">🔐</div> Politiques: MFA, IAM, GPO, gestion d'accès, sensibilisation</div>
-        <div class="card skill"><div class="icon">🖥️</div> Systèmes: Windows Server, Linux (Debian), Windows 10/11, macOS</div>
-        <div class="card skill"><div class="icon">🏢</div> Annuaire & Cloud: Active Directory, Azure AD, Intune</div>
-        <div class="card skill"><div class="icon">🌐</div> Réseau: DHCP, DNS, VLAN, supervision (Zabbix, Centreon, Grafana)</div>
-        <div class="card skill"><div class="icon">⚙️</div> Scripts: PowerShell, Bash, Python; Power Automate</div>
-        <div class="card skill"><div class="icon">📦</div> Outils IT: SCCM, ServiceNow, Jira, GLPI</div>
-        <div class="card skill"><div class="icon">🧩</div> Remote: TeamViewer, AnyDesk, RDP; MDP: Bitwarden, KeePass</div>
-        <div class="card skill"><div class="icon">🗣️</div> Langues: FR (C1), EN (C1), Persan (native)</div>
+      <h2 data-en="Skills" data-fr="Compétences">Skills</h2>
+      <p class="lead" data-en="Security · Systems · Automation · Tools" data-fr="Sécurité · Systèmes · Automatisation · Outils">Security · Systems · Automation · Tools</p>
+      <div class="grid cols-3">
+        <div class="card p24">
+          <h3>Security</h3>
+          <div class="chips">
+            <span class="chip">Kali</span><span class="chip">Nmap</span><span class="chip">Wireshark</span><span class="chip">IDS/IPS</span><span class="chip">Firewall</span><span class="chip">OpenVPN</span><span class="chip">WireGuard</span>
+          </div>
+        </div>
+        <div class="card p24">
+          <h3>Systems</h3>
+          <div class="chips">
+            <span class="chip">Windows Server</span><span class="chip">Debian</span><span class="chip">Win 10/11</span><span class="chip">macOS</span>
+          </div>
+        </div>
+        <div class="card p24">
+          <h3>Directory & Cloud</h3>
+          <div class="chips">
+            <span class="chip">Active Directory</span><span class="chip">Entra ID (Azure AD)</span><span class="chip">Intune</span>
+          </div>
+        </div>
+        <div class="card p24">
+          <h3>Networking</h3>
+          <div class="chips">
+            <span class="chip">DHCP</span><span class="chip">DNS</span><span class="chip">VLAN</span><span class="chip">Zabbix</span><span class="chip">Centreon</span><span class="chip">Grafana</span>
+          </div>
+        </div>
+        <div class="card p24">
+          <h3>Automation</h3>
+          <div class="chips">
+            <span class="chip">PowerShell</span><span class="chip">Bash</span><span class="chip">Python</span><span class="chip">Power Automate</span>
+          </div>
+        </div>
+        <div class="card p24">
+          <h3>Other</h3>
+          <div class="chips">
+            <span class="chip">SCCM</span><span class="chip">ServiceNow</span><span class="chip">Jira</span><span class="chip">GLPI</span><span class="chip">RDP</span><span class="chip">Bitwarden</span><span class="chip">KeePass</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="projects">
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
     <div class="container">
-      <h2 class="section-title"><span class="lang-en">Projects</span><span class="lang-fr">Projets</span></h2>
-      <p class="section-sub"><span class="lang-en">Selected hands‑on builds and labs.</span><span class="lang-fr">Sélection de réalisations et de labs.</span></p>
-      <div class="proj-grid">
-        <!-- RoseLingerie -->
-        <article class="card proj">
-          <h4 class="lang-en">Two‑Site Enterprise Lab</h4>
-          <h4 class="lang-fr">Lab d'entreprise à deux sites</h4>
-          <p class="lang-en">AD domain, pfSense site‑to‑site VPN (192.168.0.0/24 ↔ 192.168.1.0/24), file servers by department, PXE deployment (SCCM), BitLocker, WSUS, security GPOs.</p>
-          <p class="lang-fr">Domaine AD, VPN site‑à‑site pfSense (192.168.0.0/24 ↔ 192.168.1.0/24), serveurs de fichiers par département, déploiement PXE (SCCM), BitLocker, WSUS, GPO de sécurité.</p>
-          <div class="badges"><span class="badge">AD/LDAP</span><span class="badge">pfSense</span><span class="badge">SCCM PXE</span><span class="badge">WSUS</span><span class="badge">BitLocker</span></div>
-        </article>
-        <!-- Wiki.js -->
-        <article class="card proj">
-          <h4 class="lang-en">Wiki.js on Debian + MariaDB + NGINX</h4>
-          <h4 class="lang-fr">Wiki.js sur Debian + MariaDB + NGINX</h4>
-          <p class="lang-en">Self‑hosted documentation wiki with LDAPS to AD, systemd service, NGINX reverse proxy, and backups.</p>
-          <p class="lang-fr">Wiki de documentation auto‑hébergé avec LDAPS vers AD, service systemd, reverse proxy NGINX et sauvegardes.</p>
-          <div class="badges"><span class="badge">Debian 12</span><span class="badge">MariaDB</span><span class="badge">NGINX</span><span class="badge">LDAPS</span></div>
-        </article>
-        <!-- Virtualization Lab -->
-        <article class="card proj">
-          <h4 class="lang-en">Virtualization Lab — Proxmox & VMware</h4>
-          <h4 class="lang-fr">Lab de virtualisation — Proxmox & VMware</h4>
-          <p class="lang-en">Homelab for cybersecurity training and infra prototyping; Windows 11 clients, servers, monitoring, and backup tests.</p>
-          <p class="lang-fr">Homelab pour formation cybersécurité et prototypage d'infrastructures ; clients Windows 11, serveurs, supervision et tests de sauvegarde.</p>
-          <div class="badges"><span class="badge">Proxmox</span><span class="badge">VMware</span><span class="badge">Backups</span></div>
-        </article>
-        <!-- Azure Footprint -->
-        <article class="card proj">
-          <h4 class="lang-en">Azure Footprint (basic)</h4>
-          <h4 class="lang-fr">Empreinte Azure (basique)</h4>
-          <p class="lang-en">Landing zone experiments: resource groups, VNets, secure storage, and Entra ID basics.</p>
-          <p class="lang-fr">Expérimentations de landing zone : groupes de ressources, VNets, stockage sécurisé et bases d'Entra ID.</p>
-          <div class="badges"><span class="badge">Azure</span><span class="badge">Networking</span><span class="badge">Storage</span></div>
-        </article>
-        <!-- Phishing & Pentest Sandboxes -->
-        <article class="card proj">
-          <h4 class="lang-en">Phishing Awareness & Pentest Sandboxes (VirtualBox)</h4>
-          <h4 class="lang-fr">Phishing & Pentest Sandboxes (VirtualBox)</h4>
-          <p class="lang-en">I developed multiple sandbox environments using VirtualBox to support phishing awareness training and penetration testing. These setups enabled me to work with tools like Wireshark for network analysis and BlackEye for simulating phishing websites, gaining hands‑on experience with ethical hacking tools.</p>
-          <p class="lang-fr">J'ai développé plusieurs environnements bac à sable avec VirtualBox pour la sensibilisation au phishing et les tests d'intrusion. Ces environnements m'ont permis d'utiliser Wireshark pour l'analyse réseau et BlackEye pour simuler des sites de phishing, renforçant ma pratique des outils d'ethical hacking.</p>
-          <div class="badges"><span class="badge">VirtualBox</span><span class="badge">Wireshark</span><span class="badge">BlackEye</span><span class="badge">Phishing</span><span class="badge">Pentest Lab</span></div>
-        </article>
+      <h2 data-en="Projects" data-fr="Projets">Projects</h2>
+      <p class="lead" data-en="Selected hands‑on builds and labs." data-fr="Sélection de réalisations et de labs.">Selected hands‑on builds and labs.</p>
+      <div class="grid cols-2">
+        <div class="project">
+          <h4>Two‑Site Enterprise Lab</h4>
+          <p class="muted">AD domain, pfSense site‑to‑site VPN (192.168.0.0/24 ↔ 192.168.1.0/24), departmental file servers, PXE deployment (SCCM), BitLocker, WSUS, security GPOs.</p>
+          <div class="tags">
+            <span class="tag">AD/LDAP</span><span class="tag">pfSense</span><span class="tag">SCCM</span><span class="tag">PXE</span><span class="tag">WSUS</span><span class="tag">BitLocker</span>
+          </div>
+        </div>
+        <div class="project">
+          <h4>Wiki.js on Debian + MariaDB + NGINX</h4>
+          <p class="muted">Self‑hosted documentation wiki with LDAPS to AD, systemd service, NGINX reverse proxy, and backups.</p>
+          <div class="tags">
+            <span class="tag">Debian 12</span><span class="tag">MariaDB</span><span class="tag">NGINX</span><span class="tag">LDAPS</span>
+          </div>
+        </div>
+        <div class="project">
+          <h4>Virtualization Lab — Proxmox & VMware</h4>
+          <p class="muted">Homelab for cybersecurity training and infra prototyping; Windows 11 clients, servers, monitoring, and backup tests.</p>
+          <div class="tags">
+            <span class="tag">Proxmox</span><span class="tag">VMware</span><span class="tag">Backups</span>
+          </div>
+        </div>
+        <div class="project">
+          <h4>Azure Footprint (basic)</h4>
+          <p class="muted">Landing zone experiments: resource groups, VNets, secure storage, and Entra ID basics.</p>
+          <div class="tags">
+            <span class="tag">Azure</span><span class="tag">Networking</span><span class="tag">Storage</span>
+          </div>
+        </div>
+        <div class="project">
+          <h4>Phishing Awareness & Pentest Sandboxes (VirtualBox)</h4>
+          <p class="muted">Multiple sandbox environments for phishing awareness and penetration testing, using Wireshark and BlackEye for simulations and analysis.</p>
+          <div class="tags">
+            <span class="tag">VirtualBox</span><span class="tag">Wireshark</span><span class="tag">BlackEye</span><span class="tag">Phishing</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="education">
-    <div class="container two">
-      <div class="card" style="padding:20px">
-        <h3 class="section-title" style="font-size:22px"><span class="lang-en">Education</span><span class="lang-fr">Formation</span></h3>
-        <ul style="margin:8px 0 0 18px">
-          <li class="lang-en"><strong>Technicien Supérieur en Systèmes et Réseaux (Bac+2)</strong> — Studi (online) · 2024–2025</li>
-          <li class="lang-fr"><strong>Technicien Supérieur en Systèmes et Réseaux (Bac+2)</strong> — Studi (en ligne) · 2024–2025</li>
+  <!-- EDUCATION -->
+  <section id="education" class="section">
+    <div class="container grid cols-2">
+      <div class="card p24">
+        <h2 data-en="Education" data-fr="Formation">Education</h2>
+        <ul class="muted">
+          <li>Technicien Supérieur en Systèmes et Réseaux (Bac+2) — Studi (online) · 2024–2025</li>
         </ul>
       </div>
-      <div class="card" style="padding:20px">
-        <h3 class="section-title" style="font-size:22px"><span class="lang-en">Certifications & Training</span><span class="lang-fr">Certifications & Formations</span></h3>
-        <ul style="margin:8px 0 0 18px">
-          <li class="lang-en"><strong>TryHackMe — SOC Level 1 & Cyber Security 101</strong> — since Jun 2025</li>
-          <li class="lang-fr"><strong>TryHackMe — SOC Level 1 & Cyber Security 101</strong> — depuis juin 2025</li>
-          <li class="lang-en">Labs: SIEM, IDS/IPS, vulnerability analysis (Kali, Nmap, Wireshark), IAM & hardening</li>
-          <li class="lang-fr">Labs : SIEM, IDS/IPS, analyse de vulnérabilités (Kali, Nmap, Wireshark), IAM & hardening</li>
+      <div class="card p24">
+        <h2 data-en="Certifications & Training" data-fr="Certifications & Formations">Certifications & Training</h2>
+        <ul class="muted">
+          <li>TryHackMe — SOC Level 1 & Cyber Security 101 — since Jun 2025</li>
+          <li>Labs: SIEM, IDS/IPS, vuln. analysis (Kali, Nmap, Wireshark), IAM & hardening</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="contact">
-    <div class="container two">
-      <div class="card" style="padding:20px">
-        <h2 class="section-title"><span class="lang-en">Contact</span><span class="lang-fr">Contact</span></h2>
-        <p class="section-sub"><span class="lang-en">Let’s build something secure, fast and reliable.</span><span class="lang-fr">Construisons quelque chose de sécurisé, rapide et fiable.</span></p>
-        <div class="row">
-          <a href="mailto:paikannasir35@gmail.com">✉️ paikannasir35@gmail.com</a>
-          <a href="tel:+33781649885">📞 +33 7 81 64 98 85</a>
-          <span>📍 Paris, France</span>
-        </div>
-        <div class="mt-6">
-          <a class="pill" href="Nasir_Paikan_CV_2025_Cybersecurite.pdf" download>⬇️ <span class="lang-en">Download my CV (PDF)</span><span class="lang-fr">Télécharger mon CV (PDF)</span></a>
-        </div>
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container card p24">
+      <h2 data-en="Contact" data-fr="Contact">Contact</h2>
+      <p class="lead" data-en="Let’s build something secure, fast and reliable." data-fr="Construisons quelque chose de sécurisé, rapide et fiable.">Let’s build something secure, fast and reliable.</p>
+      <div class="row">
+        <a class="cta" href="mailto:paikannasir35@gmail.com">Email me</a>
+        <a class="cta" href="tel:+33781649885">Call</a>
+        <a class="cta" href="cv.pdf" download>Download my CV (PDF)</a>
       </div>
-      <div class="card" style="padding:20px">
-  <h3 style="margin:0 0 8px">
-    <span class="lang-en">Available for Missions</span>
-    <span class="lang-fr">Disponible pour Missions</span>
-  </h3>
-  <ul style="margin:0 0 0 18px">
-    <li class="lang-en">Cybersecurity: Pentesting, SOC, vulnerability assessments</li>
-    <li class="lang-fr">Cybersécurité : Pentest, SOC, évaluations de vulnérabilités</li>
-    <li class="lang-en">IT Support: troubleshooting, end-user support, migrations</li>
-    <li class="lang-fr">Support IT : dépannage, support utilisateurs, migrations</li>
-    <li class="lang-en">Systems & Network Administration: AD, Intune, Entra ID, GPO, networking</li>
-    <li class="lang-fr">Administration Systèmes & Réseaux : AD, Intune, Entra ID, GPO, réseaux</li>
-  </ul>
-</div>
+      <div class="chips" style="margin-top:16px">
+        <span class="chip">Pentesting</span><span class="chip">SOC</span><span class="chip">IT Support</span><span class="chip">Systems & Networks</span>
+      </div>
     </div>
   </section>
 
-  <footer>
+  <footer class="footer">
     <div class="container">
-      <div class="row" style="justify-content:space-between;align-items:center">
-        <div>© <span id="year"></span> Nasir Paikan. All rights reserved.</div>
+      <div class="row" style="justify-content:space-between">
+        <span>© <span id="year"></span> Nasir Paikan</span>
         <div class="row">
-          <a class="pill" href="#projects">Projects</a>
-          <a class="pill" href="#experience">Experience</a>
-          <a class="pill" href="#skills">Skills</a>
+          <a href="#projects">Projects</a><span>•</span>
+          <a href="#experience">Experience</a><span>•</span>
+          <a href="#skills">Skills</a>
         </div>
       </div>
     </div>
   </footer>
 
   <script>
-    const y = document.getElementById('year'); y.textContent = new Date().getFullYear();
-    const themeBtn = document.getElementById('theme');
-    let light = false;
-    const setMode = (l)=>{
-      light = l;
-      document.documentElement.style.setProperty('--bg', l ? '#f7f7fb' : '#0b0b0f');
-      document.documentElement.style.setProperty('--card', l ? '#ffffff' : '#0f1117');
-      document.documentElement.style.setProperty('--text', l ? '#15151a' : '#e6e6eb');
-      document.documentElement.style.setProperty('--muted', l ? '#4b4b57' : '#a3a3b2');
-      document.documentElement.style.setProperty('--line', l ? '#eaeaf2' : '#1d2030');
-    };
-    themeBtn.addEventListener('click', ()=> setMode(!light));
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Language toggle
-    const langBtn = document.getElementById('lang');
-    const savedLang = localStorage.getItem('np-lang') || 'en';
-    document.documentElement.setAttribute('data-lang', savedLang);
-    langBtn.addEventListener('click', ()=>{
-      const cur = document.documentElement.getAttribute('data-lang') === 'en' ? 'fr' : 'en';
-      document.documentElement.setAttribute('data-lang', cur);
-      localStorage.setItem('np-lang', cur);
-    });
+    // simple language toggle (EN default)
+    const btnEn = document.getElementById('btn-en');
+    const btnFr = document.getElementById('btn-fr');
+    const els = document.querySelectorAll('[data-en]');
+    function setLang(lang){
+      els.forEach(el=>{ el.textContent = el.dataset[lang]; });
+      btnEn.setAttribute('aria-pressed', lang==='en');
+      btnFr.setAttribute('aria-pressed', lang==='fr');
+      document.documentElement.lang = lang;
+      localStorage.setItem('np.lang', lang);
+    }
+    btnEn.addEventListener('click',()=>setLang('en'));
+    btnFr.addEventListener('click',()=>setLang('fr'));
+    const saved = localStorage.getItem('np.lang');
+    if(saved==='fr') setLang('fr');
+
+    // smooth active link highlighting
+    const sections = [...document.querySelectorAll('main, section')];
+    const links = [...document.querySelectorAll('.nav-links a')];
+    const map = Object.fromEntries(links.map(a=>[a.getAttribute('href').slice(1), a]));
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          links.forEach(l=>l.style.borderColor='transparent');
+          const id = e.target.id || 'home';
+          const active = map[id];
+          if(active){ active.style.borderColor = 'var(--line)'; }
+        }
+      })
+    },{ rootMargin: '-50% 0px -45% 0px', threshold: 0 });
+    sections.forEach(s=>obs.observe(s));
   </script>
 </body>
 </html>
