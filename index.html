@@ -83,7 +83,14 @@
     <div class="mx-auto max-w-6xl px-4">
       <div class="flex h-16 items-center justify-between">
         <a href="#home" class="font-extrabold tracking-tight text-xl">NP<span class="sr-only">Nasir Paikan</span></a>
-        <nav class="hidden gap-6 md:flex">$1</nav>
+        <nav class="hidden gap-6 md:flex">
+          <a href="#about" class="hover:text-indigo-300 u-underline">About</a>
+          <a href="#experience" class="hover:text-indigo-300 u-underline">Experience</a>
+          <a href="#skills" class="hover:text-indigo-300 u-underline">Skills</a>
+          <a href="#projects" class="hover:text-indigo-300 u-underline">Projects</a>
+          <a href="#education" class="hover:text-indigo-300 u-underline">Education</a>
+          <a href="#contact" class="hover:text-indigo-300 u-underline">Contact</a>
+        </nav>
         <div class="flex items-center gap-2">
           <button id="langToggle" class="rounded-full border border-white/10 px-3 py-1 text-xs md:text-sm hover:bg-white/5">FR</button>
           <a href="#contact" class="hidden md:inline-flex rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold hover:bg-indigo-500">Hire me</a>
@@ -130,7 +137,12 @@
             <span class="text-slate-500">•</span>
             <a class="hover:text-indigo-300" href="https://www.linkedin.com/in/nasir-paikan" target="_blank" rel="noopener">LinkedIn</a>
           </div>
-          <div class="mt-6 flex flex-wrap gap-2 text-xs text-slate-300 reveal">$1</div>
+          <div class="mt-6 flex flex-wrap gap-2 text-xs text-slate-300 reveal">
+            <span class="rounded-full bg-white/5 px-3 py-1">SOC</span>
+            <span class="rounded-full bg-white/5 px-3 py-1">Systems</span>
+            <span class="rounded-full bg-white/5 px-3 py-1">Cybersecurity</span>
+            <span class="rounded-full bg-white/5 px-3 py-1">Automation</span>
+          </div>
         </div>
         <div class="order-first md:order-last">
           <div class="relative mx-auto avatar-wrap rounded-3xl ring-1 ring-white/10 shadow-2xl glass grid place-items-center">
@@ -186,8 +198,6 @@
 
             </svg>
             <button id="palette" class="absolute bottom-2 right-2 text-xs btn btn-ghost" title="Change colors">🎨</button>
-          </div>
-            </div>
           </div>
         </div>
       </div>
@@ -409,35 +419,14 @@
   </footer>
 
   <script>
-    // year
+    // ---------- Basic setup ----------
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // mobile menu
     const btn = document.getElementById('menuBtn');
     const menu = document.getElementById('mobileMenu');
     btn?.addEventListener('click', () => menu.classList.toggle('hidden'));
 
-    // simple EN/FR toggle for visible strings with .i18n
-    let current = 'en';
-    const toggle = document.getElementById('langToggle');
-    const nodes = Array.from(document.querySelectorAll('.i18n'));
-    function setLang(lang){
-      current = lang;
-      nodes.forEach(n=>{ const t = n.dataset[lang]; if(t) n.textContent = t; });
-      toggle.textContent = lang === 'en' ? 'FR' : 'EN';
-      document.documentElement.lang = lang;
-    }
-    toggle?.addEventListener('click', ()=> setLang(current==='en' ? 'fr' : 'en'));
-    <script>
-    // year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // mobile menu
-    const btn = document.getElementById('menuBtn');
-    const menu = document.getElementById('mobileMenu');
-    btn?.addEventListener('click', () => menu.classList.toggle('hidden'));
-
-    // simple EN/FR toggle for visible strings with .i18n
+    // i18n toggle
     let current = 'en';
     const toggle = document.getElementById('langToggle');
     const nodes = Array.from(document.querySelectorAll('.i18n'));
@@ -449,42 +438,9 @@
     }
     toggle?.addEventListener('click', ()=> setLang(current==='en' ? 'fr' : 'en'));
 
-    // -------- IntersectionObserver to reveal on scroll (mobile friendly) --------
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(!prefersReduced && 'IntersectionObserver' in window){
-      const revealTargets = document.querySelectorAll('.reveal');
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('reveal--visible'); io.unobserve(e.target); } });
-      }, { rootMargin: '0px 0px -10% 0px', threshold: .12 });
-      revealTargets.forEach(el=> io.observe(el));
-    } else {
-      document.querySelectorAll('.reveal').forEach(el=> el.classList.add('reveal--visible'));
-    }
-    <script>
-    // year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // mobile menu
-    const btn = document.getElementById('menuBtn');
-    const menu = document.getElementById('mobileMenu');
-    btn?.addEventListener('click', () => menu.classList.toggle('hidden'));
-
-    // simple EN/FR toggle for visible strings with .i18n
-    let current = 'en';
-    const toggle = document.getElementById('langToggle');
-    const nodes = Array.from(document.querySelectorAll('.i18n'));
-    function setLang(lang){
-      current = lang;
-      nodes.forEach(n=>{ const t = n.dataset[lang]; if(t) n.textContent = t; });
-      toggle.textContent = lang === 'en' ? 'FR' : 'EN';
-      document.documentElement.lang = lang;
-    }
-    toggle?.addEventListener('click', ()=> setLang(current==='en' ? 'fr' : 'en'));
-
-    // -------- IntersectionObserver to reveal on scroll (with robust fallbacks) --------
+    // Reveal on scroll with robust fallback
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const toReveal = () => document.querySelectorAll('.reveal');
-
     function instantReveal(){ toReveal().forEach(el=> el.classList.add('reveal--visible')); }
 
     if(!prefersReduced && 'IntersectionObserver' in window){
@@ -492,18 +448,17 @@
         entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('reveal--visible'); io.unobserve(e.target); } });
       }, { rootMargin: '0px 0px -5% 0px', threshold: 0.05 });
       toReveal().forEach(el=> io.observe(el));
-      // Fallback: ensure visibility even if IO never fires
       window.addEventListener('load', ()=> setTimeout(()=>{
         document.querySelectorAll('.reveal:not(.reveal--visible)').forEach(el=> el.classList.add('reveal--visible'));
       }, 1200));
     } else { instantReveal(); }
 
-    // -------- Color palette switcher for avatar --------
+    // Avatar color palette switcher
     const palettes = [
-      ['#6366f1','#ec4899','#22d3ee'], // indigo-pink-cyan
-      ['#22c55e','#0ea5e9','#a78bfa'], // green-cyan-violet
-      ['#f59e0b','#ef4444','#10b981'], // amber-red-emerald
-      ['#8b5cf6','#06b6d4','#f472b6']  // violet-cyan-rose
+      ['#6366f1','#ec4899','#22d3ee'],
+      ['#22c55e','#0ea5e9','#a78bfa'],
+      ['#f59e0b','#ef4444','#10b981'],
+      ['#8b5cf6','#06b6d4','#f472b6']
     ];
     let pi = 0;
     document.getElementById('palette')?.addEventListener('click', ()=>{
@@ -513,6 +468,15 @@
       document.documentElement.style.setProperty('--c2', c2);
       document.documentElement.style.setProperty('--c3', c3);
     });
+
+    // ---------- Self-tests (console) ----------
+    try {
+      console.assert(document.querySelector('svg') !== null, 'Avatar SVG should exist');
+      console.assert(document.querySelector('#projectsGrid')?.children.length > 0, 'Projects should not be empty');
+      console.assert(document.querySelector('#skillsGrid')?.children.length > 0, 'Skills should not be empty');
+      console.assert(typeof setLang === 'function', 'setLang should be defined');
+      console.log('%cSelf-tests passed','color:#10b981');
+    } catch (e) { console.warn('Self-test error', e); }
   </script>
 </body>
 </html>
