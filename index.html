@@ -4,344 +4,406 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nasir Paikan — Cybersecurity · Systems & Networks</title>
-  <meta name="description" content="SOC & Cybersecurity-focused IT professional — Windows/Linux, AD/Entra, Intune, SCCM, automation. Paris, France." />
+  <meta name="description" content="Nasir Paikan — Cybersecurity analyst and systems/network engineer. SOC, AD/Entra, Intune, SCCM, pfSense, VPN, GPO, PowerShell automation. Available for missions in Paris and remote." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="theme-color" content="#0b1220" />
+  <!-- Open Graph -->
   <meta property="og:title" content="Nasir Paikan — Cybersecurity · Systems & Networks" />
-  <meta property="og:description" content="SOC & Cybersecurity-focused IT professional — Windows/Linux, AD/Entra, Intune, SCCM, automation. Paris, France." />
+  <meta property="og:description" content="SOC · Systems · Security · Automation. Available for pentesting & cybersecurity missions." />
   <meta property="og:type" content="website" />
-  <meta name="color-scheme" content="light dark" />
-  <link rel="icon" href="favicon.ico" />
+  <meta property="og:url" content="https://paikan2024.github.io/Nasir.PAIKAN/" />
+  <!-- No OG image (no external assets) -->
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nasir Paikan",
+    "jobTitle": "Cybersecurity Analyst / Systems & Networks",
+    "email": "mailto:paikannasir35@gmail.com",
+    "telephone": "+33781649885",
+    "address": {"@type":"PostalAddress","addressLocality":"Paris","addressCountry":"FR"},
+    "url": "https://paikan2024.github.io/Nasir.PAIKAN/",
+    "sameAs": ["https://www.linkedin.com/in/nasir-paikan"]
+  }
+  </script>
   <style>
-    :root{
-      --bg: #0b0e14;          /* near-black slate */
-      --panel: #121826;       /* card bg */
-      --muted: #9aa4b2;       /* text secondary */
-      --text: #e6eaf2;        /* text main */
-      --brand: #4ea1ff;       /* primary accent */
-      --brand-2: #7ee787;     /* secondary accent */
-      --line: #1f2636;        /* borders */
-      --chip: #1a2131;        /* badge */
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius-xl: 20px;
-      --radius-lg: 14px;
-      --radius-md: 10px;
+    :root { color-scheme: dark light; --c1:#6366f1; --c2:#ec4899; --c3:#22d3ee; }
+    html { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; }
+    .glass { backdrop-filter: blur(8px); background: rgba(12, 18, 32, 0.6); }
+
+    /* ------ Safe default: visible if JS/IO fails ------ */
+    .reveal { opacity: 1; transform: none; }
+
+    /* ---------- Motion System (respects reduced motion) ---------- */
+    @media (prefers-reduced-motion: no-preference) {
+      .float { animation: float 6s ease-in-out infinite; }
+      .pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
+      .spin-slow { animation: spin 18s linear infinite; }
+      .spin-medium { animation: spin 9s linear infinite; }
+      .shimmer { background-size: 200% 100%; animation: shimmer 6s linear infinite; }
+      .reveal { opacity: 0; transform: translateY(14px) scale(.98); transition: opacity .7s ease, transform .7s ease; }
+      .reveal--visible { opacity: 1; transform: translateY(0) scale(1); }
+      .scan { animation: scan 3.5s ease-in-out infinite; }
     }
-    @media (prefers-color-scheme: light){
-      :root{ --bg:#f7f8fb; --panel:#ffffff; --text:#111827; --muted:#6b7280; --line:#e5e7eb; --chip:#f1f5f9; --shadow:0 10px 30px rgba(2,6,23,.08);}  
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1120px;margin:auto;padding:0 20px}
-    .nav{position:sticky;top:0;z-index:50;background:rgb(from var(--panel) r g b / .75);backdrop-filter:saturate(1.5) blur(10px);border-bottom:1px solid var(--line)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
-    .brand-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 0 0 4px rgb(78 161 255 / .15)}
-    .nav-links{display:flex;gap:14px;flex-wrap:wrap}
-    .nav-links a{padding:8px 12px;border-radius:10px;border:1px solid transparent}
-    .nav-links a:hover{border-color:var(--line);background:rgb(from var(--panel) r g b / .5)}
-    .cta{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;background:linear-gradient(135deg,var(--brand),#6cc3ff);color:#001b36;font-weight:600;box-shadow:var(--shadow)}
-    .cta:hover{filter:brightness(1.05)}
-    .hero{padding:72px 0 36px}
-    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
-    .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-xl);box-shadow:var(--shadow)}
-    .p24{padding:24px}
-    h1{font-size:clamp(28px,3.3vw,46px);line-height:1.15;margin:0 0 8px}
-    .subtitle{color:var(--muted);font-size:clamp(14px,1.2vw,16px);margin:0 0 14px}
-    .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 0}
-    .chip{background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-weight:600}
-    .muted{color:var(--muted)}
-    .grid{display:grid;gap:16px}
-    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .section{padding:26px 0}
-    .section h2{margin:0 0 12px;font-size:clamp(20px,2.2vw,28px)}
-    .section p.lead{margin:0 0 16px;color:var(--muted)}
-    .timeline{position:relative;padding-left:20px}
-    .timeline:before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--line)}
-    .t-item{position:relative;margin:0 0 14px;padding:12px 14px 12px 18px;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--panel)}
-    .t-item:before{content:"";position:absolute;left:-6px;top:16px;width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px rgb(78 161 255 / .15)}
-    .t-title{display:flex;justify-content:space-between;gap:10px;font-weight:700}
-    .t-meta{font-size:14px;color:var(--muted)}
-    .project{border:1px solid var(--line);border-radius:var(--radius-lg);padding:16px;background:var(--panel)}
-    .project h4{margin:0 0 6px}
-    .project .tags{display:flex;flex-wrap:wrap;gap:8px}
-    .project .tag{border:1px dashed var(--line);border-radius:999px;padding:6px 10px;font-size:14px}
-    .footer{padding:28px 0;color:var(--muted);border-top:1px solid var(--line);margin-top:32px}
-    .lang-toggle{border:1px solid var(--line);background:var(--panel);border-radius:999px;display:inline-flex}
-    .lang-toggle button{padding:6px 10px;border:none;background:transparent;color:var(--muted);cursor:pointer}
-    .lang-toggle button[aria-pressed="true"]{color:var(--text);background:var(--chip);border-radius:999px}
-    .hide{display:none}
-    /* responsive */
-    @media (max-width: 940px){ .hero-grid{grid-template-columns:1fr} }
+
+    @keyframes float { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-8px) } }
+    @keyframes pulseGlow { 0%,100%{ box-shadow: 0 0 0 0 rgba(99,102,241,.25) } 50%{ box-shadow: 0 0 40px 0 rgba(99,102,241,.35) } }
+    @keyframes spin { to{ transform: rotate(360deg) } }
+    @keyframes shimmer { 0%{ background-position: 0% 0% } 100%{ background-position: 200% 0% } }
+    @keyframes scan { 0%,100%{ transform: translateY(-60px) } 50%{ transform: translateY(60px) } }
+
+    /* Fancy gradient borders without images */
+    .gradient-border { position: relative; }
+    .gradient-border::before { content:''; position:absolute; inset:0; border-radius: inherit; padding:1px; background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+
+    /* Nav hover underline */
+    .u-underline { position:relative; }
+    .u-underline::after { content:''; position:absolute; left:0; right:100%; bottom:-6px; height:2px; background: linear-gradient(90deg,var(--c1),var(--c3)); transition: right .3s ease; }
+    .u-underline:hover::after { right:0; }
+
+    /* Buttons */
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; border-radius:9999px; padding:.6rem 1rem; font-weight:600; }
+    .btn-primary { background: linear-gradient(90deg,var(--c1),var(--c3)); }
+    .btn-primary:hover { filter: brightness(1.1); }
+    .btn-ghost { border:1px solid rgba(255,255,255,.1); }
+    .btn-ghost:hover { background: rgba(255,255,255,.06); }
+
+    /* Avatar sizing on mobile */
+    .avatar-wrap { width: 14rem; height: 14rem; }
+    @media (min-width: 768px){ .avatar-wrap { width: 18rem; height: 18rem; } }
   </style>
 </head>
-<body>
-  <!-- NAV -->
-  <div class="nav">
-    <div class="container nav-inner">
-      <div class="brand"><span class="brand-dot"></span> <span>NP</span></div>
-      <nav class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
+<body class="bg-slate-950 text-slate-100 selection:bg-indigo-600/40">
+  <!-- Top nav -->
+  <header class="sticky top-0 z-40 border-b border-white/5 bg-slate-950/70 glass">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="flex h-16 items-center justify-between">
+        <a href="#home" class="font-extrabold tracking-tight text-xl">NP<span class="sr-only">Nasir Paikan</span></a>
+        <nav class="hidden gap-6 md:flex">$1</nav>
+        <div class="flex items-center gap-2">
+          <button id="langToggle" class="rounded-full border border-white/10 px-3 py-1 text-xs md:text-sm hover:bg-white/5">FR</button>
+          <a href="#contact" class="hidden md:inline-flex rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold hover:bg-indigo-500">Hire me</a>
+          <button id="menuBtn" class="md:hidden rounded-full border border-white/10 p-2" aria-label="Open menu">☰</button>
+        </div>
+      </div>
+    </div>
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-white/5">
+      <nav class="mx-auto max-w-6xl px-4 py-3 grid grid-cols-2 gap-3">
+        <a href="#about" class="hover:text-indigo-300 u-underline">About</a>
+        <a href="#experience" class="hover:text-indigo-300 u-underline">Experience</a>
+        <a href="#skills" class="hover:text-indigo-300 u-underline">Skills</a>
+        <a href="#projects" class="hover:text-indigo-300 u-underline">Projects</a>
+        <a href="#education" class="hover:text-indigo-300 u-underline">Education</a>
+        <a href="#contact" class="hover:text-indigo-300 u-underline">Contact</a>
       </nav>
-      <div class="row">
-        <div class="lang-toggle" role="group" aria-label="Language">
-          <button id="btn-en" aria-pressed="true">EN</button>
-          <button id="btn-fr" aria-pressed="false">FR</button>
-        </div>
-        <a class="cta" href="#contact">Contact</a>
-      </div>
     </div>
-  </div>
+  </header>
 
-  <main id="home" class="hero">
-    <div class="container hero-grid">
-      <section class="card p24">
-        <h1 data-en="Nasir Paikan" data-fr="Nasir Paikan">Nasir Paikan</h1>
-        <p class="subtitle" data-en="Cybersecurity Analyst · SOC Analyst · Systems & Security Administration" data-fr="Analyste Cybersécurité · Analyste SOC · Administration Systèmes & Sécurité">Cybersecurity Analyst · SOC Analyst · Systems & Security Administration</p>
-        <div class="row muted">
-          <a href="mailto:paikannasir35@gmail.com">✉️ paikannasir35@gmail.com</a>
-          <span>•</span>
-          <a href="tel:+33781649885">+33 7 81 64 98 85</a>
-          <span>•</span>
-          <span>Paris, France</span>
-          <span>•</span>
-          <a href="https://www.linkedin.com/in/nasir-paikan" target="_blank" rel="noopener">LinkedIn</a>
+  <!-- Hero -->
+  <section id="home" class="relative isolate overflow-hidden">
+    <div class="mx-auto max-w-6xl px-4 py-16 md:py-24">
+      <div class="grid items-center gap-8 md:grid-cols-2">
+        <div>
+          <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">
+            <span class="i18n" data-en="Nasir Paikan" data-fr="Nasir Paikan">Nasir Paikan</span>
+          </h1>
+          <p class="mt-3 text-lg md:text-xl text-slate-300">
+            <span class="i18n" data-en="Cybersecurity Analyst · SOC · Systems & Security Administration" data-fr="Analyste cybersécurité · SOC · Administration Systèmes & Sécurité">Cybersecurity Analyst · SOC · Systems & Security Administration</span>
+          </p>
+          <p class="mt-4 text-slate-400">
+            <span class="i18n" data-en="Available for pentesting & cybersecurity missions (hybrid/remote, Paris/FR)." data-fr="Disponible pour des missions pentest & cybersécurité (hybride/télétravail, Paris/FR).">Available for pentesting & cybersecurity missions (hybrid/remote, Paris/FR).</span>
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#projects" class="btn btn-primary shimmer i18n" data-en="View Projects" data-fr="Voir les projets">View Projects</a>
+            <a href="#" onclick="alert('Add your CV PDF later (optional).'); return false;" class="btn btn-ghost gradient-border i18n" data-en="Download CV" data-fr="Télécharger le CV">Download CV</a>
+          </div>
+          <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-300">
+            <a href="mailto:paikannasir35@gmail.com" class="hover:text-indigo-300">✉️ paikannasir35@gmail.com</a>
+            <a href="tel:+33781649885" class="hover:text-indigo-300">+33 7 81 64 98 85</a>
+            <span class="text-slate-500">•</span>
+            <span>Paris, France</span>
+            <span class="text-slate-500">•</span>
+            <a class="hover:text-indigo-300" href="https://www.linkedin.com/in/nasir-paikan" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-2 text-xs text-slate-300 reveal">$1</div>
         </div>
-        <p class="muted" style="margin-top:12px" data-en="IT professional focused on cybersecurity and systems administration (AD, Intune, GPO, VPN, monitoring). Hands-on SOC training (TryHackMe SOC L1) and vulnerability/pentest workflows (Kali, Nmap, Wireshark). Curious, rigorous, and incident-driven; aiming for SOC & operational security roles." data-fr="Professionnel IT orienté cybersécurité et administration systèmes (AD, Intune, GPO, VPN, supervision). Formé aux environnements SOC (TryHackMe SOC L1) et à l'analyse de vulnérabilités/pentest (Kali, Nmap, Wireshark). Curieux, rigoureux et orienté résolution d'incidents ; objectif SOC & cybersécurité opérationnelle.">IT professional focused on cybersecurity and systems administration...</p>
-        <div class="chips">
-          <span class="chip">SOC</span>
-          <span class="chip">Systems & Networks</span>
-          <span class="chip">Cybersecurity</span>
-          <span class="chip">Automation</span>
-        </div>
-        <div class="row" style="margin-top:16px">
-          <a class="cta" href="#projects">View Projects</a>
-          <a class="cta" href="cv.pdf" download>⬇️ Download CV</a>
-        </div>
-      </section>
-      <aside class="card p24" style="text-align:center">
-        <img alt="Portrait avatar" src="avatar.jpg" style="width:230px;height:230px;border-radius:50%;object-fit:cover;border:6px solid var(--chip)" />
-        <p class="muted" style="margin:10px 0 0" data-en="Available for Pentesting & Cybersecurity Missions" data-fr="Disponible pour des missions de Pentest & Cybersécurité">Available for Pentesting & Cybersecurity Missions</p>
-        <div class="chips" style="justify-content:center">
-          <span class="chip">Hybrid</span><span class="chip">On‑site</span><span class="chip">Freelance/CDI</span>
-        </div>
-      </aside>
-    </div>
-  </main>
+        <div class="order-first md:order-last">
+          <div class="relative mx-auto avatar-wrap rounded-3xl ring-1 ring-white/10 shadow-2xl glass grid place-items-center">
+            <!-- Animated SVG Avatar: cyber eye + hex rings + scanning beam + subtle initials -->
+            <svg viewBox="0 0 220 220" class="w-56 h-56 md:w-72 md:h-72">
+              <defs>
+                <radialGradient id="g0" cx="50%" cy="50%" r="60%">
+                  <stop offset="0%" stop-color="#0ea5e9" stop-opacity=".9"/>
+                  <stop offset="60%" stop-color="#6366f1" stop-opacity=".6"/>
+                  <stop offset="100%" stop-color="#0b1220" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="var(--c1)"/>
+                  <stop offset="50%" stop-color="var(--c2)"/>
+                  <stop offset="100%" stop-color="var(--c3)"/>
+                </linearGradient>
+                <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="3" result="b"/>
+                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
 
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <div class="container grid cols-2">
-      <div class="card p24">
-        <h2 data-en="About" data-fr="À propos">About</h2>
-        <p class="lead" data-en="Snapshot of my profile and interests." data-fr="Aperçu de mon profil et de mes intérêts.">Snapshot of my profile and interests.</p>
-        <p data-en="I design, secure and operate Windows/Linux environments with Active Directory, Entra ID/Intune, SCCM and strong baseline hardening. I build realistic labs (pfSense VPN, PXE imaging, Wiki.js with LDAPS), document clearly, and coach users on security best practices." data-fr="Je conçois, sécurise et exploite des environnements Windows/Linux avec Active Directory, Entra ID/Intune, SCCM et un durcissement solide. Je crée des labs réalistes (VPN pfSense, imagerie PXE, Wiki.js avec LDAPS), documente clairement et accompagne les utilisateurs sur les bonnes pratiques de sécurité.">...</p>
-      </div>
-      <div class="card p24">
-        <h2>Highlights</h2>
-        <div class="chips">
-          <span class="chip">AD/Entra · Intune · SCCM</span>
-          <span class="chip">pfSense · VPN · GPO</span>
-          <span class="chip">Kali · Nmap · Wireshark</span>
-          <span class="chip">PowerShell · Bash · Python</span>
+              <!-- Glow disk -->
+              <circle cx="110" cy="110" r="96" fill="url(#g0)" opacity="0.85"/>
+
+              <!-- Hex rings -->
+              <g transform="translate(110,110)">
+                <g class="spin-slow" style="transform-origin:110px 110px">
+                  <polygon points="86,0 43,74 -43,74 -86,0 -43,-74 43,-74" fill="none" stroke="url(#g1)" stroke-opacity=".5" stroke-width="2"/>
+                </g>
+                <g class="spin-medium" style="transform-origin:110px 110px">
+                  <polygon points="70,0 35,60 -35,60 -70,0 -35,-60 35,-60" fill="none" stroke="url(#g1)" stroke-opacity=".5" stroke-width="2"/>
+                </g>
+              </g>
+
+              <!-- Central iris/pupil with initials -->
+              <circle cx="110" cy="110" r="36" fill="#0b1220" filter="url(#soft)"/>
+              <circle cx="110" cy="110" r="36" fill="none" stroke="url(#g1)" stroke-width="3" class="pulse-glow"/>
+              <text x="110" y="116" text-anchor="middle" font-size="18" fill="#94a3b8" opacity=".35" style="letter-spacing:2px; font-weight:700">NASIR</text>
+
+              <!-- Scanning beam -->
+              <g transform="translate(0,110)">
+                <rect class="scan" x="24" y="-60" width="172" height="26" fill="url(#g1)" opacity=".15" rx="8"/>
+              </g>
+
+              <!-- Reticle lines -->
+              <g stroke="url(#g1)" stroke-opacity=".6" stroke-width="2">
+                <line x1="110" y1="18" x2="110" y2="42"/>
+                <line x1="110" y1="198" x2="110" y2="176"/>
+                <line x1="18" y1="110" x2="42" y2="110"/>
+                <line x1="198" y1="110" x2="176" y2="110"/>
+              </g>
+
+            </svg>
+            <button id="palette" class="absolute bottom-2 right-2 text-xs btn btn-ghost" title="Change colors">🎨</button>
+          </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience" class="section">
-    <div class="container">
-      <h2 data-en="Experience" data-fr="Expérience">Experience</h2>
-      <p class="lead" data-en="Hands-on roles in support, systems & security." data-fr="Rôles opérationnels en support, systèmes & sécurité.">Hands-on roles in support, systems & security.</p>
-      <div class="timeline">
-        <article class="t-item">
-          <div class="t-title">
-            <span data-en="IT Support Engineer — SISL/HCLTech (End client: Groupecat)" data-fr="Ingénieur Support — SISL/HCLTech (Client : Groupecat)">IT Support Engineer — SISL/HCLTech (End client: Groupecat)</span>
-            <span class="t-meta" data-en="Suresnes · Since May 2025" data-fr="Suresnes · Depuis mai 2025">Suresnes · Since May 2025</span>
+  <!-- Highlights -->
+  <section class="border-y border-white/5 bg-slate-900/30">
+    <div class="mx-auto max-w-6xl px-4 py-10 md:py-12">
+      <h2 class="text-xl font-semibold text-slate-200 i18n" data-en="Highlights" data-fr="Points forts">Highlights</h2>
+      <div class="mt-4 flex flex-wrap gap-2 text-sm text-slate-300">
+        <span class="rounded-full bg-white/5 px-3 py-1">AD / Entra</span>
+        <span class="rounded-full bg-white/5 px-3 py-1">Intune</span>
+        <span class="rounded-full bg-white/5 px-3 py-1">SCCM</span>
+        <span class="rounded-full bg-white/5 px-3 py-1">pfSense</span>
+        <span class="rounded-full bg-white/5 px-3 py-1">VPN</span>
+        <span class="rounded-full bg-white/5 px-3 py-1">GPO</span>
+        <span class="rounded-full bg-white/5 px-3 py-1">Kali</span>
+        <span class="rounded-full bg-white/5 px-3 py-1">Nmap</span>
+        <span class="rounded-full bg-white/5 px-3 py-1">Wireshark</span>
+        <span class="rounded-full bg-white/5 px-3 py-1">PowerShell</span>
+        <span class="rounded-full bg-white/5 px-3 py-1">Bash</span>
+        <span class="rounded-full bg-white/5 px-3 py-1">Python</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="mx-auto max-w-6xl px-4 py-16">
+    <div class="md:flex md:items-end md:justify-between">
+      <h2 class="text-2xl font-bold">Experience</h2>
+      <p class="text-sm text-slate-400 i18n" data-en="Hands-on roles in support, systems & security." data-fr="Expériences pratiques en support, systèmes & sécurité.">Hands-on roles in support, systems & security.</p>
+    </div>
+    <ol class="mt-8 space-y-8" id="expList">
+      <li class="relative pl-8 reveal">
+        <span class="absolute left-0 top-1.5 h-3 w-3 rounded-full bg-indigo-500"></span>
+        <div class="rounded-2xl border border-white/5 bg-white/5 p-4">
+          <div class="flex flex-wrap items-baseline gap-3">
+            <h3 class="font-semibold">IT Support Engineer — SISL/HCLTech <span class="text-slate-400">(End client: Kenvue)</span></h3>
+            <span class="text-xs text-slate-400">May 2025 – Present · Suresnes/Issy‑les‑Moulineaux</span>
           </div>
-          <ul class="muted">
-            <li data-en="N2/N3 support across Windows, macOS & network; VPN, certificates, GPO, system incidents." data-fr="Support N2/N3 Windows, macOS & réseau ; VPN, certificats, GPO, incidents systèmes.">N2/N3 support...</li>
-            <li data-en="Endpoint management via Intune, SCCM, Workspace ONE UEM; packaging & imaging." data-fr="Gestion postes via Intune, SCCM, Workspace ONE UEM ; packaging & imaging.">Endpoint management...</li>
-            <li data-en="PowerShell automation; security compliance; AD & Entra ID (Azure AD)." data-fr="Automatisation PowerShell ; conformité sécurité ; AD & Entra ID (Azure AD).">PowerShell automation...</li>
+          <ul class="mt-3 list-disc pl-5 text-sm text-slate-300">
+            <li>N2/N3 support, escalations and onsite interventions.</li>
+            <li>Endpoint management in Microsoft 365 (Intune/Entra, compliance hardening).</li>
+            <li>PowerShell automation for imaging, inventory and security tasks.</li>
           </ul>
-        </article>
-        <article class="t-item">
-          <div class="t-title">
-            <span data-en="IT Support Engineer — SISU/HCLTech (End client: Kenvue)" data-fr="Ingénieur Support — SISU/HCLTech (Client : Kenvue)">IT Support Engineer — SISU/HCLTech (End client: Kenvue)</span>
-            <span class="t-meta">Issy‑les‑Moulineaux · May–Jun 2025</span>
+        </div>
+      </li>
+      <li class="relative pl-8 reveal">
+        <span class="absolute left-0 top-1.5 h-3 w-3 rounded-full bg-indigo-500"></span>
+        <div class="rounded-2xl border border-white/5 bg-white/5 p-4">
+          <div class="flex flex-wrap items-baseline gap-3">
+            <h3 class="font-semibold">Systems & Network Technician — Excelya</h3>
+            <span class="text-xs text-slate-400">Aug 2024 – Mar 2025</span>
           </div>
-          <ul class="muted">
-            <li data-en="Onsite L1/L2 support (hardware, software, network) for endpoints & mobiles." data-fr="Support de proximité N1/N2 (matériel, logiciel, réseau) pour postes & mobiles.">Onsite L1/L2 support...</li>
-            <li data-en="O365 environment (Teams, Exchange, Intune); onboarding/offboarding." data-fr="Environnement O365 (Teams, Exchange, Intune) ; onboarding/offboarding.">O365 environment...</li>
-          </ul>
-        </article>
-        <article class="t-item">
-          <div class="t-title">
-            <span data-en="Systems & Network Technician — Excelya" data-fr="Technicien Systèmes & Réseaux — Excelya">Systems & Network Technician — Excelya</span>
-            <span class="t-meta">Aug 2024 – Mar 2025</span>
-          </div>
-          <ul class="muted">
+          <ul class="mt-3 list-disc pl-5 text-sm text-slate-300">
             <li>AD administration, DHCP/DNS, network monitoring; remote & onsite support.</li>
-            <li>PowerShell for automation and hardening.</li>
+            <li>PowerShell for automation and hardening across endpoints.</li>
           </ul>
-        </article>
-        <article class="t-item">
-          <div class="t-title">
-            <span data-en="Onsite Support Technician — HelpLine (Euronext)" data-fr="Technicien support — HelpLine (Euronext)">Onsite Support Technician — HelpLine (Euronext)</span>
-            <span class="t-meta">Oct 2022 – Sep 2024</span>
+        </div>
+      </li>
+      <li class="relative pl-8 reveal">
+        <span class="absolute left-0 top-1.5 h-3 w-3 rounded-full bg-indigo-500"></span>
+        <div class="rounded-2xl border border-white/5 bg-white/5 p-4">
+          <div class="flex flex-wrap items-baseline gap-3">
+            <h3 class="font-semibold">Onsite Support Technician — HelpLine (Euronext)</h3>
+            <span class="text-xs text-slate-400">Oct 2022 – Sep 2024</span>
           </div>
-          <ul class="muted">
+          <ul class="mt-3 list-disc pl-5 text-sm text-slate-300">
             <li>Workstation migrations; multichannel support; remote assistance.</li>
             <li>VMware for VMs; process and tooling improvements.</li>
           </ul>
-        </article>
-      </div>
-    </div>
+        </div>
+      </li>
+    </ol>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills" class="section">
-    <div class="container">
-      <h2 data-en="Skills" data-fr="Compétences">Skills</h2>
-      <p class="lead" data-en="Security · Systems · Automation · Tools" data-fr="Sécurité · Systèmes · Automatisation · Outils">Security · Systems · Automation · Tools</p>
-      <div class="grid cols-3">
-        <div class="card p24">
-          <h3>Security</h3>
-          <div class="chips">
-            <span class="chip">Kali</span><span class="chip">Nmap</span><span class="chip">Wireshark</span><span class="chip">IDS/IPS</span><span class="chip">Firewall</span><span class="chip">OpenVPN</span><span class="chip">WireGuard</span>
-          </div>
+  <!-- Skills -->
+  <section id="skills" class="border-y border-white/5 bg-slate-900/30">
+    <div class="mx-auto max-w-6xl px-4 py-16">
+      <h2 class="text-2xl font-bold">Skills</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3" id="skillsGrid">
+        <div class="rounded-2xl border border-white/5 bg-white/5 p-5 gradient-border reveal">
+          <h3 class="font-semibold">Security</h3>
+          <p class="mt-2 text-sm text-slate-300">Kali, Nmap, Wireshark, IDS/IPS, Firewall, OpenVPN, WireGuard</p>
         </div>
-        <div class="card p24">
-          <h3>Systems</h3>
-          <div class="chips">
-            <span class="chip">Windows Server</span><span class="chip">Debian</span><span class="chip">Win 10/11</span><span class="chip">macOS</span>
-          </div>
+        <div class="rounded-2xl border border-white/5 bg-white/5 p-5 gradient-border reveal">
+          <h3 class="font-semibold">Systems</h3>
+          <p class="mt-2 text-sm text-slate-300">Windows Server, Debian, Windows 10/11, macOS</p>
         </div>
-        <div class="card p24">
-          <h3>Directory & Cloud</h3>
-          <div class="chips">
-            <span class="chip">Active Directory</span><span class="chip">Entra ID (Azure AD)</span><span class="chip">Intune</span>
-          </div>
+        <div class="rounded-2xl border border-white/5 bg-white/5 p-5 gradient-border reveal">
+          <h3 class="font-semibold">Directory & Cloud</h3>
+          <p class="mt-2 text-sm text-slate-300">Active Directory, Entra ID, Intune</p>
         </div>
-        <div class="card p24">
-          <h3>Networking</h3>
-          <div class="chips">
-            <span class="chip">DHCP</span><span class="chip">DNS</span><span class="chip">VLAN</span><span class="chip">Zabbix</span><span class="chip">Centreon</span><span class="chip">Grafana</span>
-          </div>
+        <div class="rounded-2xl border border-white/5 bg-white/5 p-5 gradient-border reveal">
+          <h3 class="font-semibold">Networking</h3>
+          <p class="mt-2 text-sm text-slate-300">DHCP, DNS, VLAN, Zabbix, Centreon, Grafana</p>
         </div>
-        <div class="card p24">
-          <h3>Automation</h3>
-          <div class="chips">
-            <span class="chip">PowerShell</span><span class="chip">Bash</span><span class="chip">Python</span><span class="chip">Power Automate</span>
-          </div>
+        <div class="rounded-2xl border border-white/5 bg-white/5 p-5 gradient-border reveal">
+          <h3 class="font-semibold">Automation</h3>
+          <p class="mt-2 text-sm text-slate-300">PowerShell, Bash, Python, Power Automate</p>
         </div>
-        <div class="card p24">
-          <h3>Other</h3>
-          <div class="chips">
-            <span class="chip">SCCM</span><span class="chip">ServiceNow</span><span class="chip">Jira</span><span class="chip">GLPI</span><span class="chip">RDP</span><span class="chip">Bitwarden</span><span class="chip">KeePass</span>
-          </div>
+        <div class="rounded-2xl border border-white/5 bg-white/5 p-5 gradient-border reveal">
+          <h3 class="font-semibold">Other</h3>
+          <p class="mt-2 text-sm text-slate-300">SCCM, ServiceNow, Jira, GLPI, RDP, Bitwarden, KeePass</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="section">
-    <div class="container">
-      <h2 data-en="Projects" data-fr="Projets">Projects</h2>
-      <p class="lead" data-en="Selected hands‑on builds and labs." data-fr="Sélection de réalisations et de labs.">Selected hands‑on builds and labs.</p>
-      <div class="grid cols-2">
-        <div class="project">
-          <h4>Two‑Site Enterprise Lab</h4>
-          <p class="muted">AD domain, pfSense site‑to‑site VPN (192.168.0.0/24 ↔ 192.168.1.0/24), departmental file servers, PXE deployment (SCCM), BitLocker, WSUS, security GPOs.</p>
-          <div class="tags">
-            <span class="tag">AD/LDAP</span><span class="tag">pfSense</span><span class="tag">SCCM</span><span class="tag">PXE</span><span class="tag">WSUS</span><span class="tag">BitLocker</span>
-          </div>
+  <!-- Projects -->
+  <section id="projects" class="mx-auto max-w-6xl px-4 py-16">
+    <div class="md:flex md:items-end md:justify-between">
+      <h2 class="text-2xl font-bold">Projects</h2>
+      <p class="text-sm text-slate-400 i18n" data-en="Selected hands-on builds and labs." data-fr="Sélection de labs et projets concrets.">Selected hands-on builds and labs.</p>
+    </div>
+    <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3" id="projectsGrid">
+      <article class="rounded-2xl border border-white/5 bg-white/5 p-5 gradient-border reveal">
+        <h3 class="font-semibold">Two‑Site Enterprise Lab</h3>
+        <p class="mt-2 text-sm text-slate-300">AD domain, pfSense site‑to‑site VPN (192.168.0.0/24 ↔ 192.168.1.0/24), departmental file servers, PXE (SCCM), BitLocker, WSUS, security GPOs.</p>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs text-slate-300">
+          <span class="rounded-full bg-white/5 px-3 py-1">AD/LDAP</span>
+          <span class="rounded-full bg-white/5 px-3 py-1">pfSense</span>
+          <span class="rounded-full bg-white/5 px-3 py-1">SCCM</span>
+          <span class="rounded-full bg-white/5 px-3 py-1">PXE</span>
+          <span class="rounded-full bg-white/5 px-3 py-1">WSUS</span>
+          <span class="rounded-full bg-white/5 px-3 py-1">BitLocker</span>
         </div>
-        <div class="project">
-          <h4>Wiki.js on Debian + MariaDB + NGINX</h4>
-          <p class="muted">Self‑hosted documentation wiki with LDAPS to AD, systemd service, NGINX reverse proxy, and backups.</p>
-          <div class="tags">
-            <span class="tag">Debian 12</span><span class="tag">MariaDB</span><span class="tag">NGINX</span><span class="tag">LDAPS</span>
-          </div>
+      </article>
+      <article class="rounded-2xl border border-white/5 bg-white/5 p-5 gradient-border reveal">
+        <h3 class="font-semibold">Wiki.js on Debian + MariaDB + NGINX</h3>
+        <p class="mt-2 text-sm text-slate-300">Self‑hosted wiki with LDAPS to AD, systemd service, NGINX reverse proxy, and backups.</p>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs text-slate-300">
+          <span class="rounded-full bg-white/5 px-3 py-1">Debian 12</span>
+          <span class="rounded-full bg-white/5 px-3 py-1">MariaDB</span>
+          <span class="rounded-full bg-white/5 px-3 py-1">NGINX</span>
+          <span class="rounded-full bg-white/5 px-3 py-1">LDAPS</span>
         </div>
-        <div class="project">
-          <h4>Virtualization Lab — Proxmox & VMware</h4>
-          <p class="muted">Homelab for cybersecurity training and infra prototyping; Windows 11 clients, servers, monitoring, and backup tests.</p>
-          <div class="tags">
-            <span class="tag">Proxmox</span><span class="tag">VMware</span><span class="tag">Backups</span>
-          </div>
+      </article>
+      <article class="rounded-2xl border border-white/5 bg-white/5 p-5 gradient-border reveal">
+        <h3 class="font-semibold">Virtualization Lab — Proxmox & VMware</h3>
+        <p class="mt-2 text-sm text-slate-300">Homelab for cybersecurity training and infra prototyping; Windows 11 clients, servers, monitoring, and backup tests.</p>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs text-slate-300">
+          <span class="rounded-full bg-white/5 px-3 py-1">Proxmox</span>
+          <span class="rounded-full bg-white/5 px-3 py-1">VMware</span>
+          <span class="rounded-full bg-white/5 px-3 py-1">Backups</span>
         </div>
-        <div class="project">
-          <h4>Azure Footprint (basic)</h4>
-          <p class="muted">Landing zone experiments: resource groups, VNets, secure storage, and Entra ID basics.</p>
-          <div class="tags">
-            <span class="tag">Azure</span><span class="tag">Networking</span><span class="tag">Storage</span>
-          </div>
+      </article>
+      <article class="rounded-2xl border border-white/5 bg-white/5 p-5 gradient-border reveal">
+        <h3 class="font-semibold">Azure Footprint (basic)</h3>
+        <p class="mt-2 text-sm text-slate-300">Landing zone experiments: resource groups, VNets, secure storage, and Entra ID basics.</p>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs text-slate-300">
+          <span class="rounded-full bg-white/5 px-3 py-1">Azure</span>
+          <span class="rounded-full bg-white/5 px-3 py-1">Networking</span>
+          <span class="rounded-full bg-white/5 px-3 py-1">Storage</span>
         </div>
-        <div class="project">
-          <h4>Phishing Awareness & Pentest Sandboxes (VirtualBox)</h4>
-          <p class="muted">Multiple sandbox environments for phishing awareness and penetration testing, using Wireshark and BlackEye for simulations and analysis.</p>
-          <div class="tags">
-            <span class="tag">VirtualBox</span><span class="tag">Wireshark</span><span class="tag">BlackEye</span><span class="tag">Phishing</span>
-          </div>
+      </article>
+      <article class="rounded-2xl border border-white/5 bg-white/5 p-5 gradient-border reveal">
+        <h3 class="font-semibold">Phishing Awareness & Pentest Sandboxes</h3>
+        <p class="mt-2 text-sm text-slate-300">Multiple sandbox environments for phishing awareness and penetration testing, using Wireshark and BlackEye for simulations and analysis.</p>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs text-slate-300">
+          <span class="rounded-full bg-white/5 px-3 py-1">VirtualBox</span>
+          <span class="rounded-full bg-white/5 px-3 py-1">Wireshark</span>
+          <span class="rounded-full bg-white/5 px-3 py-1">BlackEye</span>
+          <span class="rounded-full bg-white/5 px-3 py-1">Phishing</span>
         </div>
-      </div>
+      </article>
     </div>
   </section>
 
-  <!-- EDUCATION -->
-  <section id="education" class="section">
-    <div class="container grid cols-2">
-      <div class="card p24">
-        <h2 data-en="Education" data-fr="Formation">Education</h2>
-        <ul class="muted">
-          <li>Technicien Supérieur en Systèmes et Réseaux (Bac+2) — Studi (online) · 2024–2025</li>
-        </ul>
-      </div>
-      <div class="card p24">
-        <h2 data-en="Certifications & Training" data-fr="Certifications & Formations">Certifications & Training</h2>
-        <ul class="muted">
-          <li>TryHackMe — SOC Level 1 & Cyber Security 101 — since Jun 2025</li>
-          <li>Labs: SIEM, IDS/IPS, vuln. analysis (Kali, Nmap, Wireshark), IAM & hardening</li>
-        </ul>
-      </div>
+  <!-- Education & Certs -->
+  <section id="education" class="border-y border-white/5 bg-slate-900/30">
+    <div class="mx-auto max-w-6xl px-4 py-16">
+      <h2 class="text-2xl font-bold">Education</h2>
+      <ul class="mt-6 list-disc pl-5 text-slate-300">
+        <li>Technicien Supérieur en Systèmes et Réseaux (Bac+2) — Studi (online) · 2024–2025</li>
+      </ul>
+      <h3 class="mt-10 font-semibold">Certifications & Training</h3>
+      <ul class="mt-3 list-disc pl-5 text-slate-300">
+        <li>TryHackMe — SOC Level 1 & Cyber Security 101 — since Jun 2025</li>
+        <li>Labs: SIEM, IDS/IPS, vulnerability analysis (Kali, Nmap, Wireshark), IAM & hardening</li>
+      </ul>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section">
-    <div class="container card p24">
-      <h2 data-en="Contact" data-fr="Contact">Contact</h2>
-      <p class="lead" data-en="Let’s build something secure, fast and reliable." data-fr="Construisons quelque chose de sécurisé, rapide et fiable.">Let’s build something secure, fast and reliable.</p>
-      <div class="row">
-        <a class="cta" href="mailto:paikannasir35@gmail.com">Email me</a>
-        <a class="cta" href="tel:+33781649885">Call</a>
-        <a class="cta" href="cv.pdf" download>Download my CV (PDF)</a>
-      </div>
-      <div class="chips" style="margin-top:16px">
-        <span class="chip">Pentesting</span><span class="chip">SOC</span><span class="chip">IT Support</span><span class="chip">Systems & Networks</span>
-      </div>
+  <!-- Contact -->
+  <section id="contact" class="mx-auto max-w-6xl px-4 py-16">
+    <div class="md:flex md:items-end md:justify-between">
+      <h2 class="text-2xl font-bold i18n" data-en="Contact" data-fr="Contact">Contact</h2>
+      <p class="text-sm text-slate-400 i18n" data-en="Let’s build something secure, fast and reliable." data-fr="Construisons quelque chose de sûr, rapide et fiable.">Let’s build something secure, fast and reliable.</p>
+    </div>
+    <div class="mt-8 grid gap-6 md:grid-cols-3">
+      <a href="mailto:paikannasir35@gmail.com" class="rounded-2xl border border-white/5 bg-white/5 p-5 hover:bg-white/10">
+        <h3 class="font-semibold">Email</h3>
+        <p class="mt-1 text-slate-300">paikannasir35@gmail.com</p>
+      </a>
+      <a href="tel:+33781649885" class="rounded-2xl border border-white/5 bg-white/5 p-5 hover:bg-white/10">
+        <h3 class="font-semibold">Phone</h3>
+        <p class="mt-1 text-slate-300">+33 7 81 64 98 85</p>
+      </a>
+      <a href="https://www.linkedin.com/in/nasir-paikan" target="_blank" rel="noopener" class="rounded-2xl border border-white/5 bg-white/5 p-5 hover:bg-white/10">
+        <h3 class="font-semibold">LinkedIn</h3>
+        <p class="mt-1 text-slate-300">linkedin.com/in/nasir-paikan</p>
+      </a>
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="row" style="justify-content:space-between">
-        <span>© <span id="year"></span> Nasir Paikan</span>
-        <div class="row">
-          <a href="#projects">Projects</a><span>•</span>
-          <a href="#experience">Experience</a><span>•</span>
-          <a href="#skills">Skills</a>
-        </div>
+  <footer class="border-t border-white/5 bg-slate-900/40">
+    <div class="mx-auto max-w-6xl px-4 py-8 text-sm text-slate-400 flex items-center justify-between">
+      <p>© <span id="year"></span> Nasir Paikan</p>
+      <div class="flex items-center gap-3">
+        <a href="#projects" class="hover:text-indigo-300">Projects</a>
+        <span>•</span>
+        <a href="#experience" class="hover:text-indigo-300">Experience</a>
+        <span>•</span>
+        <a href="#skills" class="hover:text-indigo-300">Skills</a>
       </div>
     </div>
   </footer>
@@ -350,37 +412,107 @@
     // year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // simple language toggle (EN default)
-    const btnEn = document.getElementById('btn-en');
-    const btnFr = document.getElementById('btn-fr');
-    const els = document.querySelectorAll('[data-en]');
-    function setLang(lang){
-      els.forEach(el=>{ el.textContent = el.dataset[lang]; });
-      btnEn.setAttribute('aria-pressed', lang==='en');
-      btnFr.setAttribute('aria-pressed', lang==='fr');
-      document.documentElement.lang = lang;
-      localStorage.setItem('np.lang', lang);
-    }
-    btnEn.addEventListener('click',()=>setLang('en'));
-    btnFr.addEventListener('click',()=>setLang('fr'));
-    const saved = localStorage.getItem('np.lang');
-    if(saved==='fr') setLang('fr');
+    // mobile menu
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn?.addEventListener('click', () => menu.classList.toggle('hidden'));
 
-    // smooth active link highlighting
-    const sections = [...document.querySelectorAll('main, section')];
-    const links = [...document.querySelectorAll('.nav-links a')];
-    const map = Object.fromEntries(links.map(a=>[a.getAttribute('href').slice(1), a]));
-    const obs = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          links.forEach(l=>l.style.borderColor='transparent');
-          const id = e.target.id || 'home';
-          const active = map[id];
-          if(active){ active.style.borderColor = 'var(--line)'; }
-        }
-      })
-    },{ rootMargin: '-50% 0px -45% 0px', threshold: 0 });
-    sections.forEach(s=>obs.observe(s));
+    // simple EN/FR toggle for visible strings with .i18n
+    let current = 'en';
+    const toggle = document.getElementById('langToggle');
+    const nodes = Array.from(document.querySelectorAll('.i18n'));
+    function setLang(lang){
+      current = lang;
+      nodes.forEach(n=>{ const t = n.dataset[lang]; if(t) n.textContent = t; });
+      toggle.textContent = lang === 'en' ? 'FR' : 'EN';
+      document.documentElement.lang = lang;
+    }
+    toggle?.addEventListener('click', ()=> setLang(current==='en' ? 'fr' : 'en'));
+    <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // mobile menu
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn?.addEventListener('click', () => menu.classList.toggle('hidden'));
+
+    // simple EN/FR toggle for visible strings with .i18n
+    let current = 'en';
+    const toggle = document.getElementById('langToggle');
+    const nodes = Array.from(document.querySelectorAll('.i18n'));
+    function setLang(lang){
+      current = lang;
+      nodes.forEach(n=>{ const t = n.dataset[lang]; if(t) n.textContent = t; });
+      toggle.textContent = lang === 'en' ? 'FR' : 'EN';
+      document.documentElement.lang = lang;
+    }
+    toggle?.addEventListener('click', ()=> setLang(current==='en' ? 'fr' : 'en'));
+
+    // -------- IntersectionObserver to reveal on scroll (mobile friendly) --------
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!prefersReduced && 'IntersectionObserver' in window){
+      const revealTargets = document.querySelectorAll('.reveal');
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('reveal--visible'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: .12 });
+      revealTargets.forEach(el=> io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el=> el.classList.add('reveal--visible'));
+    }
+    <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // mobile menu
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn?.addEventListener('click', () => menu.classList.toggle('hidden'));
+
+    // simple EN/FR toggle for visible strings with .i18n
+    let current = 'en';
+    const toggle = document.getElementById('langToggle');
+    const nodes = Array.from(document.querySelectorAll('.i18n'));
+    function setLang(lang){
+      current = lang;
+      nodes.forEach(n=>{ const t = n.dataset[lang]; if(t) n.textContent = t; });
+      toggle.textContent = lang === 'en' ? 'FR' : 'EN';
+      document.documentElement.lang = lang;
+    }
+    toggle?.addEventListener('click', ()=> setLang(current==='en' ? 'fr' : 'en'));
+
+    // -------- IntersectionObserver to reveal on scroll (with robust fallbacks) --------
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const toReveal = () => document.querySelectorAll('.reveal');
+
+    function instantReveal(){ toReveal().forEach(el=> el.classList.add('reveal--visible')); }
+
+    if(!prefersReduced && 'IntersectionObserver' in window){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('reveal--visible'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -5% 0px', threshold: 0.05 });
+      toReveal().forEach(el=> io.observe(el));
+      // Fallback: ensure visibility even if IO never fires
+      window.addEventListener('load', ()=> setTimeout(()=>{
+        document.querySelectorAll('.reveal:not(.reveal--visible)').forEach(el=> el.classList.add('reveal--visible'));
+      }, 1200));
+    } else { instantReveal(); }
+
+    // -------- Color palette switcher for avatar --------
+    const palettes = [
+      ['#6366f1','#ec4899','#22d3ee'], // indigo-pink-cyan
+      ['#22c55e','#0ea5e9','#a78bfa'], // green-cyan-violet
+      ['#f59e0b','#ef4444','#10b981'], // amber-red-emerald
+      ['#8b5cf6','#06b6d4','#f472b6']  // violet-cyan-rose
+    ];
+    let pi = 0;
+    document.getElementById('palette')?.addEventListener('click', ()=>{
+      pi = (pi+1) % palettes.length;
+      const [c1,c2,c3] = palettes[pi];
+      document.documentElement.style.setProperty('--c1', c1);
+      document.documentElement.style.setProperty('--c2', c2);
+      document.documentElement.style.setProperty('--c3', c3);
+    });
   </script>
 </body>
 </html>
